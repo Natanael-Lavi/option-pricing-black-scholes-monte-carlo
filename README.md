@@ -20,7 +20,7 @@ At maturity, its exact distribution is:
 
 $$
 S_T = S_0 \exp\left(\left(r-\frac{\sigma^2}{2}\right)T
-+\sigma\sqrt{T}\cdot Z\right),
++\sigma\sqrt{T}\cdot Z\right) 
 \qquad Z\sim\mathcal{N}(0,1).
 $$
 
