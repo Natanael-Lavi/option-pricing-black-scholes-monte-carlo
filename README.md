@@ -11,9 +11,9 @@ The project compares the numerical estimates with the analytical prices and stud
 
 The underlying asset follows a geometric Brownian motion under the risk-neutral measure:
 
-\[
- dS_t = rS_t\,dt + \sigma S_t\,dW_t.
-\]
+$$
+dS_t = r S_t\,dt + \sigma S_t\,dW_t
+$$
 
 At maturity, its exact distribution is:
 
