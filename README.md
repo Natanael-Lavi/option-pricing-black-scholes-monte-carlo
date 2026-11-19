@@ -71,7 +71,7 @@ The RMSE is used instead of the absolute error from a single run because an indi
 The confidence intervals use the normal approximation:
 
 $$
-\widehat{V}_N \pm 1.96\times\widehat{SE}_N.
+\widehat{V}_N \pm 1.96 \cdot \widehat{SE}_N.
 $$
 
 ![Monte Carlo convergence experiment](convergence.png)
