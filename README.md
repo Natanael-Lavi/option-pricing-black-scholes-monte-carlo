@@ -49,7 +49,7 @@ The default example uses:
 | $T$ | 1 year | Time to maturity |
 | $r$ | 3% | Continuously compounded risk-free rate |
 | $\sigma$ | 20% | Annualised volatility |
-| $N$ | 1,000,000 | Number of Monte Carlo simulations |
+| $N$ | 1 million | Number of Monte Carlo simulations |
 
 The program prints the Black-Scholes price, the Monte Carlo estimate and an approximate 95% confidence interval for both calls and puts. With the fixed random seed, the results are reproducible.
 
