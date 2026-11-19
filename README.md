@@ -7,6 +7,12 @@ A small Python project that prices European call and put options using two metho
 
 The project compares the numerical estimates with the analytical prices and studies how the Monte Carlo error changes as the number of simulations increases.
 
+## Motivation
+
+I chose this project because I wanted to explore how mathematical concepts can be used to solve a concrete problem in finance. What interested me was the possibility of comparing two different approaches to the same problem: an analytical solution through Black-Scholes and a numerical approximation through Monte Carlo simulation.
+
+Beyond comparing the resulting prices, I also wanted to understand how reliable the numerical estimates are and how their accuracy evolves as the number of simulations increases.
+
 ## Model and assumptions
 
 The underlying asset follows a geometric Brownian motion under the risk-neutral measure:
@@ -76,6 +82,19 @@ $$
 
 ![Monte Carlo convergence experiment](convergence.png)
 
+## Key observations
+
+For the chosen parameters and one million simulated paths, the Monte Carlo estimates are close to the analytical Black-Scholes prices:
+
+- **Call:** 7.1320 (Monte Carlo) compared with 7.1281 (Black-Scholes).
+- **Put:** 9.0250 (Monte Carlo) compared with 9.0248 (Black-Scholes).
+
+Both differences fall within the corresponding approximate 95% confidence intervals.
+
+One point I found particularly interesting is that increasing the number of simulations does not necessarily make the error smaller at every individual step. This is why I used the RMSE over 20 independent runs to study convergence, rather than relying on the absolute error of a single simulation.
+
+The experiment illustrates how Monte Carlo methods can approximate an analytical price, while also showing the role of sampling uncertainty in numerical estimation.
+
 ## Installation
 
 Python 3.10 or later is recommended.
@@ -106,8 +125,6 @@ The tests cover reference prices, put-call parity, zero-maturity and zero-volati
 ## Limitations
 
 This is an educational implementation of the standard Black-Scholes model. It does not include dividends, transaction costs, early exercise, stochastic volatility or jumps. The confidence intervals rely on a normal approximation and are most informative when the number of simulations is sufficiently large.
-
-## Acknowledgement
 
 ## Acknowledgements
 
