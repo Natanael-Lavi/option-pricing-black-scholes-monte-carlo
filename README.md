@@ -17,17 +17,17 @@ $$
 
 At maturity, its exact distribution is:
 
-\[
- S_T = S_0\exp\left((r-\tfrac12\sigma^2)T + \sigma\sqrt{T}Z\right),
- \qquad Z\sim\mathcal N(0,1).
-\]
+$$
+S_T = S_0 \exp\left(\left(r-\frac{1}{2}\sigma^2\right)T
++ \sigma\sqrt{T}\,Z\right),
+\qquad Z\sim\mathcal{N}(0,1).
+$$
 
 The option value is the discounted expected payoff:
 
-\[
- V_0 = e^{-rT}\,\mathbb E[\text{payoff}(S_T)].
-\]
-
+$$
+V_0 = e^{-rT}\,\mathbb{E}\left[\operatorname{payoff}(S_T)\right].
+$$
 The implementation assumes:
 
 - European exercise (the option can only be exercised at maturity).
@@ -43,35 +43,33 @@ The default example uses:
 
 | Parameter | Value | Meaning |
 |---|---:|---|
-| \(S_0\) | 100 | Initial underlying price |
-| \(K\) | 105 | Strike price |
-| \(T\) | 1 year | Time to maturity |
-| \(r\) | 3% | Continuously compounded risk-free rate |
-| \(\sigma\) | 20% | Annualised volatility |
-| \(N\) | 1,000,000 | Number of Monte Carlo simulations |
-
+| $S_0$ | 100 | Initial underlying price |
+| $K$ | 105 | Strike price |
+| $T$ | 1 year | Time to maturity |
+| $r$ | 3% | Continuously compounded risk-free rate |
+| $\sigma$ | 20% | Annualised volatility |
+| $N$ | 1,000,000 | Number of Monte Carlo simulations |
 The program prints the Black-Scholes price, the Monte Carlo estimate and an approximate 95% confidence interval for both calls and puts. With the fixed random seed, the results are reproducible.
 
 It also checks put-call parity:
 
-\[
- C-P=S_0-Ke^{-rT}.
-\]
-
+$$
+C-P=S_0-Ke^{-rT}.
+$$
 ## Convergence experiment
 
 Running the program generates `convergence.png` with two panels:
 
 - **Left:** one reproducible Monte Carlo estimate for each sample size, its approximate 95% pointwise confidence interval, and the Black-Scholes reference price.
-- **Right:** the root mean squared error (RMSE) calculated over 20 independent Monte Carlo runs for each sample size. A reference line with slope \(-1/2\) illustrates the expected \(N^{-1/2}\) error scale.
+- **Right:** the root mean squared error (RMSE) calculated over 20 independent Monte Carlo runs for each sample size. A reference line with slope $-1/2$ illustrates the expected $N^{-1/2}$ error scale.
 
 The RMSE is used instead of the absolute error from a single run because an individual simulation error can move up or down when the number of paths increases. The theoretical convergence rate describes the statistical scale of the error, not a guarantee that every individual estimate improves monotonically.
 
 The confidence intervals use the normal approximation:
 
-\[
- \widehat V_N \pm 1.96\,\widehat{SE}_N.
-\]
+$$
+\widehat{V}_N \pm 1.96\,\widehat{SE}_N.
+$$
 
 ## Installation
 
