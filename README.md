@@ -26,19 +26,8 @@ $$
 
 The option value is the discounted expected payoff:
 
-
-At maturity, its exact distribution is:
-
 $$
-S_T = S_0 \exp\left(\left(r-\frac{1}{2}\sigma^2\right)T
-+\sigma\sqrt{T}\,Z\right),
-\qquad Z\sim\mathcal{N}(0,1).
-$$
-
-The option value is the discounted expected payoff:
-
-$$
-V_0=e^{-rT}\,\mathbb{E}\left[\operatorname{payoff}(S_T)\right].
+V_0=e^{-rT}\,\mathbb{E}\left[\mathrm{payoff}(S_T)\right].
 $$
 
 The implementation assumes:
