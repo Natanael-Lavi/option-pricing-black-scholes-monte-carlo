@@ -109,4 +109,6 @@ This is an educational implementation of the standard Black-Scholes model. It do
 
 ## Acknowledgement
 
-An AI assistant was used as a coding aid during the initial development. The formulas, assumptions, implementation and tests should be understood and checked by the project author.
+## Acknowledgements
+
+AI tools were used to assist with parts of the development of this project.
