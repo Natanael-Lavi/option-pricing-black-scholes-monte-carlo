@@ -19,15 +19,15 @@ $$
 At maturity, its exact distribution is:
 
 $$
-S_T = S_0 \exp\left(\left(r-\frac{1}{2}\sigma^2\right)T
-+\sigma\sqrt{T}\,Z\right),
+S_T = S_0 \exp\left(\left(r-\frac{\sigma^2}{2}\right)T
++\sigma\sqrt{T}\cdot Z\right),
 \qquad Z\sim\mathcal{N}(0,1).
 $$
 
 The option value is the discounted expected payoff:
 
 $$
-V_0=e^{-rT}\,\mathbb{E}\left[\mathrm{payoff}(S_T)\right].
+V_0 = e^{-rT}\cdot\mathbb{E}[\mathrm{payoff}(S_T)].
 $$
 
 The implementation assumes:
@@ -51,6 +51,7 @@ The default example uses:
 | $r$ | 3% | Continuously compounded risk-free rate |
 | $\sigma$ | 20% | Annualised volatility |
 | $N$ | 1,000,000 | Number of Monte Carlo simulations |
+
 The program prints the Black-Scholes price, the Monte Carlo estimate and an approximate 95% confidence interval for both calls and puts. With the fixed random seed, the results are reproducible.
 
 It also checks put-call parity:
@@ -58,6 +59,7 @@ It also checks put-call parity:
 $$
 C-P=S_0-Ke^{-rT}.
 $$
+
 ## Convergence experiment
 
 Running the program generates `convergence.png` with two panels:
@@ -70,8 +72,10 @@ The RMSE is used instead of the absolute error from a single run because an indi
 The confidence intervals use the normal approximation:
 
 $$
-\widehat{V}_N \pm 1.96\,\widehat{SE}_N.
+\widehat{V}_N \pm 1.96\times\widehat{SE}_N.
 $$
+
+![Monte Carlo convergence experiment](convergence.png)
 
 ## Installation
 
