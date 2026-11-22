@@ -99,7 +99,7 @@ The experiment illustrates how Monte Carlo methods can approximate an analytical
 
 The call is out of the money ($K = 105$), so under the risk-neutral measure only $\mathbb{P}(S_T > K) = N(d_2) \approx 42.3\%$ of paths end with a positive payoff. The other 57.7% pay exactly 0. The price of 7.13 is therefore carried by a minority of paths with a long right tail, which is why a precise estimate requires many simulations.
 
-![Payoff distribution](payoff_distribution (1).png)
+<img width="1422" height="752" alt="payoff_distribution" src="https://github.com/user-attachments/assets/3818a208-1f23-4ff3-8aa5-cd28cd2535fe" />
 
 *Discounted call payoff over one million simulated paths (log scale on the vertical axis).*
 
