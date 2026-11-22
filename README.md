@@ -95,6 +95,14 @@ One point I found particularly interesting is that increasing the number of simu
 
 The experiment illustrates how Monte Carlo methods can approximate an analytical price, while also showing the role of sampling uncertainty in numerical estimation.
 
+## Why many simulations are needed: most paths pay nothing
+
+The call is out of the money ($K = 105$), so under the risk-neutral measure only $\mathbb{P}(S_T > K) = N(d_2) \approx 42.3\%$ of paths end with a positive payoff. The other 57.7% pay exactly 0. The price of 7.13 is therefore carried by a minority of paths with a long right tail, which is why a precise estimate requires many simulations.
+
+![Payoff distribution](payoff_distribution.png)
+
+*Discounted call payoff over one million simulated paths (log scale on the vertical axis).*
+
 ## Installation
 
 Python 3.10 or later is recommended.
