@@ -9,9 +9,7 @@ The project compares the numerical estimates with the analytical prices and stud
 
 ## Motivation
 
-I chose this project because I wanted to explore how mathematical concepts can be used to solve a concrete problem in finance. What interested me was the possibility of comparing two different approaches to the same problem: an analytical solution through Black-Scholes and a numerical approximation through Monte Carlo simulation.
-
-Beyond comparing the resulting prices, I also wanted to understand how reliable the numerical estimates are and how their accuracy evolves as the number of simulations increases.
+I chose this project to compare two approaches to the same problem: an analytical solution through Black-Scholes and a numerical approximation through Monte Carlo simulation. Because the exact price is known, I could go beyond comparing prices and measure how reliable the numerical estimates are and how their accuracy evolves as the number of simulations increases.
 
 ## Model and assumptions
 
@@ -57,9 +55,16 @@ The default example uses:
 | $\sigma$ | 20% | Annualised volatility |
 | $N$ | 1 million | Number of Monte Carlo simulations |
 
-The program prints the Black-Scholes price, the Monte Carlo estimate and an approximate 95% confidence interval for both calls and puts. With the fixed random seed, the results are reproducible.
+Results with one million paths and a fixed seed (the program prints them, and the results are reproducible):
 
-It also checks put-call parity:
+| Option | Black-Scholes | Monte Carlo | 95% CI half-width | Absolute difference |
+|---|---:|---:|---:|---:|
+| Call | 7.1281 | 7.1320 | ±0.0246 | 0.0039 |
+| Put | 9.0248 | 9.0250 | ±0.0217 | 0.0001 |
+
+These differences come from one run with one seed, so they say little about accuracy: the convergence experiment below uses 20 independent runs for each sample size.
+
+The program also checks put-call parity:
 
 $$
 C-P=S_0-K \cdot e^{-rT}.
@@ -84,12 +89,7 @@ $$
 
 ## Key observations
 
-For the chosen parameters and one million simulated paths, the Monte Carlo estimates are close to the analytical Black-Scholes prices:
-
-- **Call:** 7.1320 (Monte Carlo) compared with 7.1281 (Black-Scholes).
-- **Put:** 9.0250 (Monte Carlo) compared with 9.0248 (Black-Scholes).
-
-Both differences fall within the corresponding approximate 95% confidence intervals.
+For the chosen parameters and one million simulated paths, the Monte Carlo estimates are close to the analytical Black-Scholes prices, and both differences fall within the corresponding approximate 95% confidence intervals (see the table above).
 
 One point I found particularly interesting is that increasing the number of simulations does not necessarily make the error smaller at every individual step. This is why I used the RMSE over 20 independent runs to study convergence, rather than relying on the absolute error of a single simulation.
 
@@ -126,6 +126,8 @@ The tests cover reference prices, put-call parity, zero-maturity and zero-volati
 
 This is an educational implementation of the standard Black-Scholes model. It does not include dividends, transaction costs, early exercise, stochastic volatility or jumps. The confidence intervals rely on a normal approximation and are most informative when the number of simulations is sufficiently large.
 
+The numerical results are specific to one set of parameters (an out-of-the-money call with $K = 105$); other strikes or volatilities would change the size of the Monte Carlo error. The simulation uses the plain estimator, without variance reduction.
+
 ## Acknowledgements
 
-AI tools were used to assist with parts of the development of this project.
+AI assistants were used during development for code structure, tests and drafting of the documentation. I ran the experiments, checked the numerical results against the closed-form price, and I am responsible for the content of this repository.
